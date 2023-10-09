@@ -4,6 +4,9 @@ import morgan from 'morgan';
 import mongoose from 'mongoose';
 import router from './Routes.js';
 import dotenv from 'dotenv';
+import { Avatarrouter } from './Controller/AvatarController.js';
+import chatrouter from './Routes/Chatroutes.js';
+import messageroutes from './Routes/Messageroutes.js';
 
 
 const env = dotenv.config()
@@ -24,7 +27,11 @@ app.get('/', (req, res) => {
 
 
 /** api routes */
-app.use('/api',router )
+app.use('/api',router );
+app.use('/api',Avatarrouter);
+app.use('/chat',chatrouter);
+app.use('/message',messageroutes);
+app.use(express.static('Public'))
 
 /** start server only when we have valid connection */
 const port= process.env.PORT || 5000;

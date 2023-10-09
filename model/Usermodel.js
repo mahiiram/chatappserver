@@ -24,7 +24,7 @@ const userSchema = new mongoose.Schema({
     AvatarImage:{
         type:String,
         default:""
-    }
+    },
 })
 
 const UserModel = mongoose.model('user',userSchema);
